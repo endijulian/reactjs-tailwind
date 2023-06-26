@@ -73,7 +73,6 @@ export default function Header() {
               </li>
               <li className="ml-6">
                 <Link
-                  id="header-cart"
                   className="flex items-center justify-center w-8 h-8 text-black md:text-white"
                   to="/cart"
                 >
