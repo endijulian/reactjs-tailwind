@@ -1,16 +1,16 @@
 import Header from "parts/Header";
 import React from "react";
-import Hero from "parts/Hero";
+import Hero from "parts/HomePage/Hero";
 import JustArrived from "parts/HomePage/JustArrived";
 import Browse from "parts/HomePage/Browse";
 import Clients from "parts/Clients";
-import Sitemap from "parts/HomePage/Sitemap";
+import Sitemap from "parts/Sitemap";
 import Footer from "parts/Footer";
 
-export default function HomePage(props) {
+export default function HomePage() {
   return (
     <>
-      <Header></Header>
+      <Header theme="white" position="absolute"></Header>
       <Hero></Hero>
       <Browse></Browse>
       <JustArrived></JustArrived>
