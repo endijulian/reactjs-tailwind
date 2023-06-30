@@ -5,6 +5,8 @@ import Sitemap from "parts/Sitemap";
 import Footer from "parts/Footer";
 
 import Breadcrumb from "components/Breadcrumb";
+import ProductDetails from "parts/Details/ProductDetails";
+import Suggestion from "parts/Details/Suggestion";
 
 export default function HomePage() {
   return (
@@ -15,9 +17,12 @@ export default function HomePage() {
         list={[
           { name: "Home", url: "/" },
           { name: "Office Room", url: "/categories/9123" },
+          { name: "Details", url: "/categories/9123/products/788" },
         ]}
       ></Breadcrumb>
 
+      <ProductDetails></ProductDetails>
+      <Suggestion></Suggestion>
       <Clients></Clients>
       <Sitemap></Sitemap>
       <Footer></Footer>
