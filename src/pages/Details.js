@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "parts/Header";
-import Clients from "parts/Clients";
 import Sitemap from "parts/Sitemap";
 import Footer from "parts/Footer";
 
@@ -23,7 +22,6 @@ export default function HomePage() {
 
       <ProductDetails></ProductDetails>
       <Suggestion></Suggestion>
-      <Clients></Clients>
       <Sitemap></Sitemap>
       <Footer></Footer>
     </>
