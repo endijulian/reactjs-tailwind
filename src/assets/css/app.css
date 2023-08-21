@@ -97,7 +97,7 @@ ul.breadcrumb li:last-child a {
 
 .slider .thumbnail .item:after {
   content: "";
-  @apply transition duration-200 absolute inset-0 bg-black bg-opacity-0 border-2 border-black border-opacity-0 rounded-lg;
+  @apply transition duration-200 absolute inset-0 bg-opacity-0 border-2  border-opacity-0 rounded-lg;
 }
 
 .slider .thumbnail .item.selected:after {
