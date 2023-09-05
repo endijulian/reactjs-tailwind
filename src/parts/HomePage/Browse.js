@@ -2,6 +2,58 @@ import React, { useEffect } from "react";
 import useAsync from "helpers/hooks/useAsync";
 import fetch from "helpers/fetch";
 
+function Loading({ ratio = {} }) {
+  const dummy = [
+    {
+      id: 1,
+      ratio: {
+        default: "1/9",
+        md: "1/4",
+      },
+    },
+    {
+      id: 2,
+      ratio: {
+        default: "1/9",
+        md: "2/2",
+      },
+    },
+    {
+      id: 3,
+      ratio: {
+        default: "1/9",
+        md: "2/3",
+      },
+    },
+    {
+      id: 4,
+      ratio: {
+        default: "1/9",
+        md: "1/4",
+      },
+    },
+  ];
+
+  return dummy.map((item, index) => {
+    return (
+      <div
+        key={item.id}
+        className={`relative card ${
+          ratio?.wrapper.default?.[item.ratio.default]
+        } ${ratio?.wrapper.md?.[item.ratio.md]}`}
+        style={{ height: index === 0 ? 180 : "auto" }}
+      >
+        <div className="bg-gray-300 rounded-lg w-full h-full">
+          <div className={`overlay ${ratio?.meta?.[item.ratio.md]}`}>
+            <div className="w-24 h-3 bg-gray-400 mt-3 rounded-full"></div>
+            <div className="w-36 h-3 bg-gray-400 mt-2 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    );
+  });
+}
+
 export default function Browse() {
   const { data, status, error, run, isLoading } = useAsync({
     data: { username: "" },
@@ -47,35 +99,37 @@ export default function Browse() {
         </div>
 
         <div className="grid grid-rows-2 grid-cols-9 gap-4">
-          {isLoading
-            ? "Loading"
-            : data.data.map((item, index) => {
-                return (
-                  <div
-                    key={item.id}
-                    className={`relative card ${
-                      ratioClassNames?.wrapper.default?.[item.ratio.default]
-                    } ${ratioClassNames?.wrapper.md?.[item.ratio.md]}`}
-                    style={{ height: index === 0 ? 180 : "auto" }}
-                  >
-                    <div className="card-shadow rounded-xl">
-                      <img
-                        src={`/images/content/${item.imageUrl}`}
-                        alt={item.title}
-                        className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl"
-                      />
-                    </div>
-                    <div
-                      className={`overlay ${
-                        ratioClassNames?.meta?.[item.ratio.md]
-                      }`}
-                    >
-                      <h5 className="text-lg font-semibold">{item.title}</h5>
-                      <span className="">{item.products} Items</span>
-                    </div>
+          {isLoading ? (
+            <Loading ratio={ratioClassNames} />
+          ) : (
+            data.data.map((item, index) => {
+              return (
+                <div
+                  key={item.id}
+                  className={`relative card ${
+                    ratioClassNames?.wrapper.default?.[item.ratio.default]
+                  } ${ratioClassNames?.wrapper.md?.[item.ratio.md]}`}
+                  style={{ height: index === 0 ? 180 : "auto" }}
+                >
+                  <div className="card-shadow rounded-xl">
+                    <img
+                      src={`/images/content/${item.imageUrl}`}
+                      alt={item.title}
+                      className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl"
+                    />
                   </div>
-                );
-              })}
+                  <div
+                    className={`overlay ${
+                      ratioClassNames?.meta?.[item.ratio.md]
+                    }`}
+                  >
+                    <h5 className="text-lg font-semibold">{item.title}</h5>
+                    <span className="">{item.products} Items</span>
+                  </div>
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </section>
