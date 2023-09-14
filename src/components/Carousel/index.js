@@ -156,14 +156,18 @@ export default function Carousel({ children, refContainer }) {
     };
   }, [onDragStart, onDragEnd, onDragMove, onClick, fnCheckIndex]);
 
-  // useLayoutEffect(() => {
-  //   if (refDragHandler.current) {
-  //     cards.current = refDragHandler.current.getElementsByClassName("card");
-  //   }
-  // }, []);
+  useLayoutEffect(() => {
+    if (refDragHandler.current) {
+      cards.current = refDragHandler.current.getElementsByClassName("card");
+    }
+  }, []);
 
   return (
-    <div ref={refDragHandler} className="flex -mx-4 flex-row relative">
+    <div
+      ref={refDragHandler}
+      className="flex -mx-4 flex-row relative"
+      style={{ paddingLeft: containerClientRect.left - 16 }}
+    >
       {children}
     </div>
   );
