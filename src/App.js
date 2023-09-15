@@ -12,7 +12,10 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<HomePage />}></Route>
-          <Route path="/categories/:idc" element={<Details />}></Route>
+          <Route
+            path="/categories/:idc/products/:ida"
+            element={<Details />}
+          ></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/congratulations" element={<Congratulation />}></Route>
           <Route path="*" element={<NotFound />}></Route>
