@@ -12,8 +12,9 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<HomePage />}></Route>
+          <Route exact path="/categories/:idc" element={<Details />}></Route>
           <Route
-            path="/categories/:idc/products/:ida"
+            path="/categories/:idc/products/:idp"
             element={<Details />}
           ></Route>
           <Route path="/cart" element={<Cart />}></Route>
