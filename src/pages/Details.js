@@ -102,14 +102,12 @@ function LoadingSuggestion() {
 export default function HomePage() {
   const { idp } = useParams();
 
-  const { data, status, error, run, isLoading } = useAsync({
-    data: { username: "" },
-  });
+  const { data, status, error, run, isLoading } = useAsync({});
   // console.log(data);
 
   useEffect(() => {
     run(fetchData({ url: `/api/products/${idp}` }));
-  }, [run]);
+  }, [run, idp]);
 
   return (
     <>
